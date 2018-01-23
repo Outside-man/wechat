@@ -15,11 +15,10 @@ public class IndexController {
     private String content;
 
     @ResponseBody
-    @RequestMapping(value = {"","/","/index"})
+    @RequestMapping(value = {"","/","index"})
     public String index(HttpServletRequest request, HttpServletResponse response){
         System.out.println(content);
         return content;
-
     }
 
 
