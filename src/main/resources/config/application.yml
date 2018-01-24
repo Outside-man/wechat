@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -9,3 +9,6 @@ spring:
     password:
   profiles:
     active: wechat
+  jpa:
+    hibernate:
+      ddl-auto: update
