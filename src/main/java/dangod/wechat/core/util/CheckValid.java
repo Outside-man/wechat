@@ -1,23 +1,20 @@
-package dangod.wechat.util;
-
-import org.springframework.stereotype.Component;
+package dangod.wechat.core.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-@Component
 public class CheckValid {
     /**
      * 验证消息是否从微信服务器发来
      *
-     * @param token
      * @param signature
      * @param timestamp
      * @param nonce
+     * @param token
      * @return
      */
-    public boolean check(String token, String signature, String timestamp, String nonce){
+    public static boolean check(String signature, String timestamp, String nonce, String token){
         // 将token、timestamp、nonce三个参数进行字典序排序
         String[] dict = new String[] {token, timestamp, nonce};
         Arrays.sort(dict);
