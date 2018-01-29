@@ -1,4 +1,4 @@
-package dangod.wechat.model.core.message.req;
+package dangod.wechat.core.message.req;
 
 public class VoiceMessage extends BaseMessage {
     // 媒体ID

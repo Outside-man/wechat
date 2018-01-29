@@ -1,8 +1,13 @@
-package dangod.wechat.model.core.message.resp;
+package dangod.wechat.core.message.resp;
 
 import java.util.List;
 
 public class NewsMessage extends BaseMessage {
+    public NewsMessage(String openId){
+        this.setToUserName(openId);
+        this.setMsgType("news");
+    }
+
     // 图文消息个数，限制为10条以内
     private int ArticleCount;
     // 多条图文消息信息，默认第一个item为大图

@@ -98,7 +98,7 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.0.2</version>
 		</dependency>
-	</dependencies>
+    </dependencies>
 
 	<build>
 		<plugins>

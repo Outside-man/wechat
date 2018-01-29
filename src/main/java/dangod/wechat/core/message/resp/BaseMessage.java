@@ -1,12 +1,16 @@
-package dangod.wechat.model.core.message.resp;
+package dangod.wechat.core.message.resp;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.util.Calendar;
 public class BaseMessage {
     // 接收方帐号（收到的OpenID）
     private String ToUserName;
     // 开发者微信号
     private String FromUserName;
     // 消息创建时间 （整型）
-    private long CreateTime;
+    private long CreateTime = Calendar.getInstance().getTime().getTime();
     // 消息类型（text/music/news）
     private String MsgType;
     // 位0x0001被标志时，星标刚收到的消息
