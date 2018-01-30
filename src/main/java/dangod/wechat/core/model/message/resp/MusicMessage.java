@@ -1,4 +1,6 @@
-package dangod.wechat.core.message.resp;
+package dangod.wechat.core.model.message.resp;
+
+import dangod.wechat.core.model.message.resp.BaseMessage;
 
 public class MusicMessage extends BaseMessage {
 

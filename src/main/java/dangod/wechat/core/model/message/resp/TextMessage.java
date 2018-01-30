@@ -1,7 +1,7 @@
-package dangod.wechat.core.message.resp;
+package dangod.wechat.core.model.message.resp;
+
 
 import dangod.wechat.core.util.XmlParse;
-import org.springframework.stereotype.Component;
 
 public class TextMessage extends BaseMessage {
     // 回复的消息内容

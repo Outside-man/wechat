@@ -1,10 +1,10 @@
 package dangod.wechat.controller;
 
-import dangod.wechat.core.action.AccessToken;
-import dangod.wechat.core.action.Follower;
+import dangod.wechat.core.model.message.send.TextSend;
+import dangod.wechat.core.service.AccessToken;
+import dangod.wechat.core.service.Follower;
 import dangod.wechat.core.util.CheckValid;
 import dangod.wechat.core.util.XmlParse;
-import dangod.wechat.service.core.Text;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import static dangod.wechat.controller.constant.ErrorType.ERROR_NOT_FROM_WX;
@@ -63,31 +65,31 @@ public class MainController {
                 //TODO 事件类型(Event) subscribe SCAN LOCATION CLICK VIEW
                 switch (map.get("Event")) {
                     case "subscribe":
-                        responseStr = Text.send(openId, "收到订阅");
+                        responseStr = TextSend.send(openId, "收到订阅");
                         break;
                     case "SCAN":
-                        responseStr = Text.send(openId, "收到扫描二维码");
+                        responseStr = TextSend.send(openId, "收到扫描二维码");
                         break;
                     case "LOCATION":
-                        responseStr = Text.send(openId, "收到坐标");
+                        responseStr = TextSend.send(openId, "收到坐标");
                         break;
                     case "CLICK":
-                        responseStr = Text.send(openId, "收到菜单点击");
+                        responseStr = TextSend.send(openId, "收到菜单点击");
                         break;
                     case "VIEW":
-                        responseStr = Text.send(openId, "收到跳转链接");
+                        responseStr = TextSend.send(openId, "收到跳转链接");
                         break;
                     default:
-                        responseStr = Text.send(openId, "公众号出故障了呢");
+                        responseStr = TextSend.send(openId, "公众号出故障了呢");
                         throw new Exception("接收到未定义类型的消息");
                 }
             }else{
                 switch (map.get("MsgType")) {
                         case "text":
-                            responseStr = Text.send(openId, "收到文字");
+                            responseStr = TextSend.send(openId, "收到文字");
                         break;
                     default:
-                        responseStr = Text.send(openId, "公众号出故障了呢");
+                        responseStr = TextSend.send(openId, "公众号出故障了呢");
                         throw new Exception("接收到未定义类型的消息");
                 }
             }
@@ -97,5 +99,16 @@ public class MainController {
         }
         return responseStr;
     }
+
+    public static Map<String, Object> map = new HashMap<>();
+
+    @ResponseBody
+    @RequestMapping(value = {"test"}, method = GET)
+    public String test(HttpServletRequest request, HttpServletResponse response){
+
+        return map.get("hello").toString();
+    }
+
+
 }
 
