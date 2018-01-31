@@ -1,5 +1,7 @@
 package dangod.wechat.core.model.message.req;
 
+import java.util.Map;
+
 public class BaseMessage {
     // 开发者微信号
     private String ToUserName;
@@ -50,5 +52,21 @@ public class BaseMessage {
 
     public void setMsgId(long msgId) {
         MsgId = msgId;
+    }
+
+    public BaseMessage(){
+
+    }
+
+    public BaseMessage(Map xml){
+        try {
+            ToUserName = (String)xml.get("ToUserName");
+            FromUserName = (String)xml.get("FromUserName");
+            CreateTime = (long)xml.get("CreateTime");
+            MsgType = (String)xml.get("MsgType");
+            MsgId = (long)xml.get("MsgType");
+        }catch (Exception e){
+
+        }
     }
 }

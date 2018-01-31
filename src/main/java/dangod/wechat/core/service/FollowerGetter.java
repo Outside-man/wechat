@@ -2,6 +2,7 @@ package dangod.wechat.core.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
+import dangod.wechat.core.model.follower.Follower;
 import dangod.wechat.core.service.AccessToken;
 import dangod.wechat.core.util.DRequest;
 import org.slf4j.Logger;
@@ -15,7 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Component
-public class Follower {
+public class FollowerGetter {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -25,11 +26,11 @@ public class Follower {
     @Value("${AppSecret}")
     private String secret;
 
-    public String getFollower(String openId) {
-        return getFollower(openId, "zh_CN");
+    public String getFollowerJSON(String openId) {
+        return getFollowerJSON(openId, "zh_CN");
     }
 
-    public String getFollower(String openId, String lang){
+    public String getFollowerJSON(String openId, String lang){
         final String urlTemp = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=%s";
         String acc = accessToken.get();
         String url = String.format(urlTemp, acc, openId, lang);
@@ -46,5 +47,15 @@ public class Follower {
             logger.error(e.getMessage());
         }
         return resultStr;
+    }
+
+    public Follower getFollower(String openId){
+        Map<String,Object> follower = JSON.parseObject(getFollowerJSON(openId),Map.class);
+        return new Follower(follower);
+    }
+
+    public Follower getFollower(String openId, String lang){
+        Map<String,Object> follower = JSON.parseObject(getFollowerJSON(openId),Map.class);
+        return new Follower(follower);
     }
 }

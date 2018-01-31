@@ -1,4 +1,4 @@
-package dangod.wechat.model.core.po;
+package dangod.wechat.core.model.po;
 
 import javax.persistence.*;
 
@@ -44,5 +44,12 @@ public class User {
 
     public void setActionLog(ActionLog actionLog) {
         this.actionLog = actionLog;
+    }
+
+    public User(String opid) {
+        this.opid = opid;
+    }
+
+    public User() {
     }
 }

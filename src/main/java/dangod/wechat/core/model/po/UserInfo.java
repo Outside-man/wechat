@@ -1,4 +1,4 @@
-package dangod.wechat.model.core.po;
+package dangod.wechat.core.model.po;
 
 import javax.persistence.*;
 @Entity
