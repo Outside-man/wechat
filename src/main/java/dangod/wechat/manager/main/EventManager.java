@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+
+import static dangod.wechat.core.constant.MessageType.*;
+
 @Component
 public class EventManager {
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -29,19 +32,22 @@ public class EventManager {
         try {
             switch ((String)xml.get("Event")) {
 
-                case "subscribe":
+                case EVENT_TYPE_SUBSCRIBE:
                     result = subscribeManager.getResulte(xml);
                     break;
-                case "SCAN":
-                    result = TextSend.send(openId, "收到扫描二维码");
+                case EVENT_TYPE_UNSUBSCRIBE:
+                    //取消订阅
                     break;
-                case "LOCATION":
+                case EVENT_TYPE_SCAN:
+                    result = subscribeManager.getResulte(xml);
+                    break;
+                case EVENT_TYPE_LOCATION:
                     result = TextSend.send(openId, "收到坐标");
                     break;
-                case "CLICK":
+                case EVENT_TYPE_CLICK:
                     result = TextSend.send(openId, "收到菜单点击");
                     break;
-                case "VIEW":
+                case EVENT_TYPE_VIEW:
                     result = TextSend.send(openId, "收到跳转链接");
                     break;
                 default:

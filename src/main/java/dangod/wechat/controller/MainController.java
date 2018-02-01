@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 import static dangod.wechat.controller.constant.ErrorType.ERROR_NOT_FROM_WX;
-import static dangod.wechat.controller.constant.MessageType.REQ_MESSAGE_TYPE_EVENT;
+import static dangod.wechat.core.constant.MessageType.REQ_MESSAGE_TYPE_EVENT;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 

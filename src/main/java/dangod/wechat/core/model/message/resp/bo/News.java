@@ -1,4 +1,4 @@
-package dangod.wechat.core.model.message.resp;
+package dangod.wechat.core.model.message.resp.bo;
 
 public class News {
     // 图文消息名称

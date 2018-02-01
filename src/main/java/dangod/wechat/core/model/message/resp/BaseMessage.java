@@ -55,5 +55,12 @@ public class BaseMessage {
     public void setFuncFlag(int funcFlag) {
         FuncFlag = funcFlag;
     }
+
+    public BaseMessage() {
+    }
+
+    public BaseMessage(String openId){
+        this.setToUserName(openId);
+    }
 }
 

@@ -1,13 +1,24 @@
 package dangod.wechat.core.model.message.resp;
 
-import dangod.wechat.core.model.message.resp.BaseMessage;
+import dangod.wechat.core.model.message.resp.bo.News;
 
 import java.util.List;
+
+import static dangod.wechat.core.constant.MessageType.RESP_MESSAGE_TYPE_NEWS;
 
 public class NewsMessage extends BaseMessage {
     public NewsMessage(String openId){
         this.setToUserName(openId);
-        this.setMsgType("news");
+        this.setMsgType(RESP_MESSAGE_TYPE_NEWS);
+    }
+    public NewsMessage(String openId, List<News> articles){
+        this.Articles = articles;
+        this.ArticleCount = articles.size();
+        this.setToUserName(openId);
+        this.setMsgType(RESP_MESSAGE_TYPE_NEWS);
+    }
+
+    public NewsMessage() {
     }
 
     // 图文消息个数，限制为10条以内

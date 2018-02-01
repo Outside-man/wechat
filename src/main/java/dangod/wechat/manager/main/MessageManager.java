@@ -1,5 +1,6 @@
 package dangod.wechat.manager.main;
 
+import dangod.wechat.core.model.message.req.TextMessage;
 import dangod.wechat.core.model.message.send.TextSend;
 import dangod.wechat.manager.message.TextManager;
 import org.slf4j.Logger;
@@ -29,7 +30,7 @@ public class MessageManager {
         try {
             switch ((String)xml.get("MsgType")) {
                 case "text":
-                    result = textManager.getResulte(xml);
+                    result = textManager.getResulte(new TextMessage(xml));
                     break;
                 default:
                     result = TextSend.send(openId, "公众号出故障了呢");

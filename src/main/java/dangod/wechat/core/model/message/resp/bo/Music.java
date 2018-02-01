@@ -1,4 +1,4 @@
-package dangod.wechat.core.model.message.resp;
+package dangod.wechat.core.model.message.resp.bo;
 
 public class Music {
     // 音乐名称

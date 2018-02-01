@@ -21,9 +21,8 @@ public class TextManager {
     @Autowired
     private CalculateService calculateService;
 
-    public String getResulte(Map xml){
-        TextMessage message = new TextMessage(xml);
-        String openId = (String)xml.get("FromUserName");
+    public String getResulte(TextMessage message){
+        String openId = message.getFromUserName();
         String result = "收到文字";
         try{
             Follower follower = followerGetter.getFollower(openId);

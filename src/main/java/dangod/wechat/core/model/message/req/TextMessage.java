@@ -22,7 +22,7 @@ public class TextMessage extends BaseMessage {
         try {
             Content = (String) xml.get("Content");
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 }

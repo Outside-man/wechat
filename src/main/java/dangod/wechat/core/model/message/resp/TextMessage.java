@@ -3,6 +3,8 @@ package dangod.wechat.core.model.message.resp;
 
 import dangod.wechat.core.util.XmlParse;
 
+import static dangod.wechat.core.constant.MessageType.RESP_MESSAGE_TYPE_TEXT;
+
 public class TextMessage extends BaseMessage {
     // 回复的消息内容
     private String Content;
@@ -10,7 +12,10 @@ public class TextMessage extends BaseMessage {
     public TextMessage(String openId,String content){
         this.setToUserName(openId);
         this.setContent(content);
-        this.setMsgType("text");
+        this.setMsgType(RESP_MESSAGE_TYPE_TEXT);
+    }
+
+    public TextMessage() {
     }
 
     public String getContent() {

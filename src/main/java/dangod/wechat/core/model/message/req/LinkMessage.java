@@ -1,5 +1,7 @@
 package dangod.wechat.core.model.message.req;
 
+import java.util.Map;
+
 public class LinkMessage extends BaseMessage {
     // 消息标题
     private String Title;
@@ -30,5 +32,19 @@ public class LinkMessage extends BaseMessage {
 
     public void setUrl(String url) {
         Url = url;
+    }
+
+    public LinkMessage() {
+    }
+
+    public LinkMessage(Map xml) {
+        super(xml);
+        try {
+            Title = (String)xml.get("Title");
+            Description = (String)xml.get("Description");
+            Url = (String)xml.get("Url");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

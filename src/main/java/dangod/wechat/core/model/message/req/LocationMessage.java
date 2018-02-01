@@ -1,5 +1,7 @@
 package dangod.wechat.core.model.message.req;
 
+import java.util.Map;
+
 public class LocationMessage extends BaseMessage {
     // 地理位置维度
     private String Location_X;
@@ -40,5 +42,20 @@ public class LocationMessage extends BaseMessage {
 
     public void setLabel(String label) {
         Label = label;
+    }
+
+    public LocationMessage() {
+    }
+
+    public LocationMessage(Map xml) {
+        super(xml);
+        try {
+            Location_X = (String)xml.get("Location_X");
+            Location_Y = (String)xml.get("Location_Y");
+            Scale = (String)xml.get("Scale");
+            Label = (String)xml.get("Label");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
