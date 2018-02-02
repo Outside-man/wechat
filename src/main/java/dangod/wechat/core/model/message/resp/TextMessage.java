@@ -26,9 +26,5 @@ public class TextMessage extends BaseMessage {
         Content = content;
     }
 
-    @Override
-    public String toString(){
-        return XmlParse.toXml(this);
-    }
 }
 

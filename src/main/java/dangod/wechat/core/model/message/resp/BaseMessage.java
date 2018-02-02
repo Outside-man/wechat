@@ -1,5 +1,6 @@
 package dangod.wechat.core.model.message.resp;
 
+import dangod.wechat.core.util.XmlParse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -61,6 +62,11 @@ public class BaseMessage {
 
     public BaseMessage(String openId){
         this.setToUserName(openId);
+    }
+
+    @Override
+    public String toString(){
+        return XmlParse.toXml(this);
     }
 }
 

@@ -28,4 +28,17 @@ public class Video {
     public void setDescription(String description) {
         Description = description;
     }
+
+    public Video() {
+    }
+
+    public Video(String mediaId, String title, String description) {
+        MediaId = mediaId;
+        Title = title;
+        Description = description;
+    }
+
+    public Video(String mediaId) {
+        MediaId = mediaId;
+    }
 }

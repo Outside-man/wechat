@@ -62,9 +62,9 @@ public class BaseMessage {
         try {
             ToUserName = (String)xml.get("ToUserName");
             FromUserName = (String)xml.get("FromUserName");
-            CreateTime = (long)xml.get("CreateTime");
+            CreateTime = Long.parseLong((String)xml.get("CreateTime"));
             MsgType = (String)xml.get("MsgType");
-            MsgId = (long)xml.get("MsgType");
+            MsgId = Long.parseLong((String)xml.get("MsgId"));
         }catch (Exception e){
             e.printStackTrace();
         }

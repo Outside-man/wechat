@@ -46,7 +46,7 @@ public class AccessToken {
                         System.out.println("accessToken已过期");
                         timer.cancel();
                     }
-                }, expires_in);
+                }, (expires_in-5)*1000);
             }
         } catch (JSONException e){
             logger.error("请求AccessToken 返回格式错误");

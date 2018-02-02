@@ -1,5 +1,6 @@
 package dangod.wechat.manager.main;
 
+import com.alibaba.fastjson.JSON;
 import dangod.wechat.core.model.message.req.TextMessage;
 import dangod.wechat.core.model.message.send.TextSend;
 import dangod.wechat.manager.message.TextManager;
@@ -27,6 +28,7 @@ public class MessageManager {
     private String manager(){
         String result = null;
         String openId = (String)xml.get("FromUserName");
+        System.out.println(JSON.toJSONString(xml));
         try {
             switch ((String)xml.get("MsgType")) {
                 case "text":
