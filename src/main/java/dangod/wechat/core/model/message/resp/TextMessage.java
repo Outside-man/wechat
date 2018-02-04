@@ -9,7 +9,8 @@ public class TextMessage extends BaseMessage {
     // 回复的消息内容
     private String Content;
 
-    public TextMessage(String openId,String content){
+    public TextMessage(String fromUserName, String openId,String content){
+        this.setFromUserName(fromUserName);
         this.setToUserName(openId);
         this.setContent(content);
         this.setMsgType(RESP_MESSAGE_TYPE_TEXT);

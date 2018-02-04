@@ -1,23 +1,26 @@
 package dangod.wechat.core.model.message.resp;
 
+import dangod.wechat.core.model.message.resp.bo.Image;
+
 import static dangod.wechat.core.constant.MessageType.RESP_MESSAGE_TYPE_IMAGE;
 import static dangod.wechat.core.constant.MessageType.RESP_MESSAGE_TYPE_MUSIC;
 
 public class ImageMessage extends BaseMessage{
-    private String MediaId;
+    private Image Image;
 
-    public String getMediaId() {
-        return MediaId;
+    public Image getImage() {
+        return Image;
     }
 
-    public void setMediaId(String mediaId) {
-        MediaId = mediaId;
+    public void setImage(Image image) {
+        Image = image;
     }
 
-    public ImageMessage(String openId, String mediaId) {
+    public ImageMessage(String fromUserName, String openId, String mediaId) {
+        this.setFromUserName(fromUserName);
         this.setToUserName(openId);
         this.setMsgType(RESP_MESSAGE_TYPE_IMAGE);
-        MediaId = mediaId;
+        Image = new Image(mediaId);
     }
     public ImageMessage() {
     }

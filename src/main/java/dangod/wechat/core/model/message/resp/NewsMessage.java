@@ -7,11 +7,13 @@ import java.util.List;
 import static dangod.wechat.core.constant.MessageType.RESP_MESSAGE_TYPE_NEWS;
 
 public class NewsMessage extends BaseMessage {
-    public NewsMessage(String openId){
+    public NewsMessage(String fromUserName, String openId){
+        this.setFromUserName(fromUserName);
         this.setToUserName(openId);
         this.setMsgType(RESP_MESSAGE_TYPE_NEWS);
     }
-    public NewsMessage(String openId, List<News> articles){
+    public NewsMessage(String fromUserName, String openId, List<News> articles){
+        this.setFromUserName(fromUserName);
         this.Articles = articles;
         this.ArticleCount = articles.size();
         this.setToUserName(openId);
@@ -40,6 +42,7 @@ public class NewsMessage extends BaseMessage {
 
     public void setArticles(List<News> articles) {
         Articles = articles;
+        this.ArticleCount = articles.size();
     }
 }
 

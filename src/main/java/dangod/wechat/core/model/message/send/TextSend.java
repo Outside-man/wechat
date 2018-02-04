@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TextSend extends BaseSend {
     public static String send(String openId, String content){
-        TextMessage msg = new TextMessage(openId, content);
-        msg.setFromUserName(FromUserName);
+        TextMessage msg = new TextMessage(FromUserName, openId, content);
         return msg.toString();
     }
 }

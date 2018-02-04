@@ -6,7 +6,8 @@ import static dangod.wechat.core.constant.MessageType.RESP_MESSAGE_TYPE_MUSIC;
 
 public class MusicMessage extends BaseMessage {
 
-    public MusicMessage(String openId){
+    public MusicMessage(String fromUserName, String openId){
+        this.setFromUserName(fromUserName);
         this.setToUserName(openId);
         this.setMsgType(RESP_MESSAGE_TYPE_MUSIC);
     }
