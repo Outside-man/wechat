@@ -17,8 +17,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class TextManager {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+public class TextMessageManager {
     @Autowired
     private FollowerGetter followerGetter;
     @Autowired
@@ -26,9 +25,8 @@ public class TextManager {
 
     public String getResulte(TextMessage message){
         String openId = message.getFromUserName();
-        String result = "收到文字";
+        String result = TextSend.send(openId, "收到文本消息");
         try{
-
             if(message.getContent().charAt(0)=='#'){
                 System.out.println(message.getContent().substring(1));
                 result = VideoSend.send(openId, message.getContent().substring(1), "demo", "demo");

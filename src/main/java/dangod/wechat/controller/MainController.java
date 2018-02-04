@@ -3,8 +3,8 @@ package dangod.wechat.controller;
 import dangod.wechat.core.service.material.Media;
 import dangod.wechat.core.util.CheckValid;
 import dangod.wechat.core.util.XmlParse;
-import dangod.wechat.manager.main.EventManager;
-import dangod.wechat.manager.main.MessageManager;
+import dangod.wechat.core.manager.EventManager;
+import dangod.wechat.core.manager.MessageManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +95,16 @@ public class MainController {
                 break;
         }
         return result;
+    }
+
+    @Value("${default-recive.error}")
+    private String error;
+
+    @ResponseBody
+    @RequestMapping(value = {"/test"}, method = GET)
+    public String test(HttpServletRequest request, HttpServletResponse response){
+
+        return error;
     }
 
 

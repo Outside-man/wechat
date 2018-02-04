@@ -31,7 +31,7 @@ public class ScanEvent extends BaseEvent{
     public ScanEvent(Map xml) {
         super(xml);
         try {
-            EventKey = (long)xml.get("EventKey");
+            EventKey = Long.parseLong((String)xml.get("EventKey"));
             Ticket = (String)xml.get("Ticket");
         }catch (Exception e){
             e.printStackTrace();

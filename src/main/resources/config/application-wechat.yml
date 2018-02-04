@@ -2,3 +2,7 @@ Token:
 AppID:
 AppSecret:
 WXID:
+default-recive:
+  subscribe: 欢迎订阅
+  error: 服务器出了故障
+  undefined: 未定义的服务

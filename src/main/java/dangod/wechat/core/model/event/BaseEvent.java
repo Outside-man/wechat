@@ -61,7 +61,7 @@ public class BaseEvent {
         try {
             ToUserName = (String)xml.get("ToUserName");
             FromUserName = (String)xml.get("FromUserName");
-            CreateTime = (long)xml.get("CreateTime");
+            CreateTime = Long.parseLong((String)xml.get("CreateTime"));
             MsgType = (String)xml.get("MsgType");
             Event = (String)xml.get("Event");
         }catch (Exception e){
