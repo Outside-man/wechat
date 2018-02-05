@@ -1,22 +1,22 @@
-package dangod.wechat.core.service;
+package dangod.wechat.core.api.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
+import dangod.wechat.core.api.AccessToken;
+import dangod.wechat.core.api.FollowerGetter;
 import dangod.wechat.core.model.follower.Follower;
-import dangod.wechat.core.service.AccessToken;
 import dangod.wechat.core.util.DRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
-@Component
-public class FollowerGetter {
+@Service
+public class FollowerGetterImpl implements FollowerGetter{
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -26,10 +26,12 @@ public class FollowerGetter {
     @Value("${AppSecret}")
     private String secret;
 
+    @Override
     public String getFollowerJSON(String openId) {
         return getFollowerJSON(openId, "zh_CN");
     }
 
+    @Override
     public String getFollowerJSON(String openId, String lang){
         final String urlTemp = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=%s&openid=%s&lang=%s";
         String acc = accessToken.get();
@@ -49,11 +51,13 @@ public class FollowerGetter {
         return resultStr;
     }
 
+    @Override
     public Follower getFollower(String openId){
         Map<String,Object> follower = JSON.parseObject(getFollowerJSON(openId),Map.class);
         return new Follower(follower);
     }
 
+    @Override
     public Follower getFollower(String openId, String lang){
         Map<String,Object> follower = JSON.parseObject(getFollowerJSON(openId),Map.class);
         return new Follower(follower);

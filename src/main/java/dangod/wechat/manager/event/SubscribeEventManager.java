@@ -3,20 +3,16 @@ package dangod.wechat.manager.event;
 import dangod.wechat.core.dao.UserRepo;
 import dangod.wechat.core.model.event.SubscribeEvent;
 import dangod.wechat.core.model.follower.Follower;
-import dangod.wechat.core.model.message.req.TextMessage;
-import dangod.wechat.core.model.message.send.TextSend;
 import dangod.wechat.core.model.po.User;
-import dangod.wechat.core.service.FollowerGetter;
-import dangod.wechat.service.CalculateService;
+import dangod.wechat.core.api.impl.FollowerGetterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
 @Component
 public class SubscribeEventManager {
 
     @Autowired
-    private FollowerGetter followerGetter;
+    private FollowerGetterImpl followerGetter;
     @Autowired
     private UserRepo userRepo;
 

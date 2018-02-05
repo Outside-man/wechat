@@ -75,11 +75,11 @@ public class MessageManager {
                     break;
                 default:
                     result = TextSend.send(openId, undefined);
-                    logger.error("接收到未定义类型的消息\n"+ XmlParse.toXml(xml));
+                    logger.error("接收到未定义类型的消息\n"+ JSON.toJSONString(xml));
             }
             if(result == null){
                 result = TextSend.send(openId, undefined);
-                logger.error("接收到未定义类型的消息\n"+ XmlParse.toXml(xml));
+                logger.error("接收到未定义类型的消息\n"+ JSON.toJSONString(xml));
             }
         } catch (Exception e) {
             result = TextSend.send(openId, error);

@@ -1,6 +1,6 @@
 package dangod.wechat.controller;
 
-import dangod.wechat.core.service.material.Media;
+import dangod.wechat.core.api.Media;
 import dangod.wechat.core.util.CheckValid;
 import dangod.wechat.core.util.XmlParse;
 import dangod.wechat.core.manager.EventManager;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.Map;
 
-import static dangod.wechat.controller.constant.ErrorType.ERROR_NOT_FROM_WX;
+import static dangod.wechat.constant.ErrorType.ERROR_NOT_FROM_WX;
 import static dangod.wechat.core.constant.MessageType.REQ_MESSAGE_TYPE_EVENT;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -97,14 +97,11 @@ public class MainController {
         return result;
     }
 
-    @Value("${default-recive.error}")
-    private String error;
-
     @ResponseBody
     @RequestMapping(value = {"/test"}, method = GET)
     public String test(HttpServletRequest request, HttpServletResponse response){
 
-        return error;
+        return null;
     }
 
 

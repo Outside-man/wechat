@@ -1,11 +1,14 @@
-package dangod.wechat.core.service.material;
+package dangod.wechat.core.api.impl;
 
 
 import com.alibaba.fastjson.JSON;
-import dangod.wechat.core.service.AccessToken;
+import dangod.wechat.core.api.AccessToken;
+import dangod.wechat.core.api.Media;
+import dangod.wechat.core.api.impl.AccessTokenImpl;
 import dangod.wechat.core.util.DRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -13,8 +16,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class Media{
+@Service
+public class MediaImpl implements Media{
     @Autowired
     private AccessToken accessToken;
 

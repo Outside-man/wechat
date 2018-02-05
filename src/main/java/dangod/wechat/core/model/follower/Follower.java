@@ -1,6 +1,6 @@
 package dangod.wechat.core.model.follower;
 
-import dangod.wechat.core.service.FollowerGetter;
+import dangod.wechat.core.api.impl.FollowerGetterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 @Component
 public class Follower {
     @Autowired
-    private FollowerGetter getter;
+    private FollowerGetterImpl getter;
     private Integer subscribe;
     private String openid;
     private String nickname;
