@@ -13,9 +13,11 @@ import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.client.HttpClient;
 import org.apache.http.util.EntityUtils;
+import org.apache.tomcat.jni.Directory;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.Charset;
 
 public class DRequest {
@@ -165,5 +167,36 @@ public class DRequest {
         //關閉聯接
         httpClient.getConnectionManager().shutdown();
         return result;
+    }
+
+    public static void downloadFile(String urlList, String savePath, String fileName) {
+        URL url = null;
+        int imageNumber = 0;
+        try {
+            url = new URL(urlList);
+            DataInputStream dataInputStream = new DataInputStream(url.openStream());
+            File saveDir = new File(savePath);
+            if (!saveDir.exists()) {
+                saveDir.mkdir();
+            }
+            String filePath =  savePath+File.separator+fileName;
+            FileOutputStream fileOutputStream = new FileOutputStream(new File(filePath));
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+            byte[] buffer = new byte[1024];
+            int length;
+
+            while ((length = dataInputStream.read(buffer)) > 0) {
+                output.write(buffer, 0, length);
+            }
+            byte[] context=output.toByteArray();
+            fileOutputStream.write(output.toByteArray());
+            dataInputStream.close();
+            fileOutputStream.close();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
